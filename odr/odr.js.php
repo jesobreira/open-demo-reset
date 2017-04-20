@@ -2,7 +2,7 @@
 header("Content-type: text/javascript");
 ?>
 
-demo_reset_domain = '<?php echo $uri = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].str_replace('odr/'.basename(__FILE__), null, $_SERVER['REQUEST_URI']); ?>';
+demo_reset_domain = '<?php echo $uri = (((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || (!empty($_SERVER['HTTP_HTTPS']) && $_SERVER['HTTP_HTTPS'] != 'off') || $_SERVER['REQUEST_SCHEME'] == 'https' || $_SERVER['SERVER_PORT'] == 443) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'].str_replace('odr/'.basename(__FILE__), null, $_SERVER['REQUEST_URI']); ?>';
 var jQueryResetFound = false;
 function initJQuery() {
 
